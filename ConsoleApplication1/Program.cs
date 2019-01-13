@@ -21,11 +21,22 @@ namespace ConsoleApplication1
             List<int> num = new List<int>();
             int output = 0, count = 0;
             string inputedodd = null;
+
             for (int i = 0; i < numberofItem; i++)
             {
-                Console.Write($"\n{i+1}) insert a number ");
-                num.Add(Convert.ToInt32(Console.ReadLine()));
+                Console.Write($"\n{i + 1}) insert a number ");
+                int myinput = Convert.ToInt32(Console.ReadLine());
+                if (num.Contains(myinput) || myinput <= 0)
+                {
+                    i += -1;
+                    Console.WriteLine("Number already in the list!");
+                }
+                else
+                {
+                    num.Add(myinput);
+                }
             }
+
             foreach (int no in num)
             {
                 if (no % 2 == 1)
@@ -35,6 +46,7 @@ namespace ConsoleApplication1
                     inputedodd += no+"+";
                 }
             }
+
             inputedodd = inputedodd.Substring(0, inputedodd.Length - 1);
             Console.WriteLine("\nNumber of odd {0} [{1}]", count, inputedodd);
             Console.WriteLine("The sum of odd number {0}", output);
