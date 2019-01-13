@@ -19,9 +19,9 @@ namespace ConsoleApplication1
         static void myInput(int numberofItem)
         {
             List<int> num = new List<int>();
-            int output = 0, count = 0;
-            string inputedodd = null;
-
+            int sumofodd = 0, sumofeven = 0, count = 0, counteven = 0;
+            string inputedodd = null, inputedeven = null;
+            
             for (int i = 0; i < numberofItem; i++)
             {
                 Console.Write($"\n{i + 1}) insert a number ");
@@ -41,15 +41,27 @@ namespace ConsoleApplication1
             {
                 if (no % 2 == 1)
                 {
-                    output += no;
+                    sumofodd += no;
                     count += 1;
                     inputedodd += no+"+";
+                }
+                else
+                {
+                    sumofeven += no;
+                    counteven += 1;
+                    inputedeven += no + "+";
                 }
             }
 
             inputedodd = inputedodd.Substring(0, inputedodd.Length - 1);
+            inputedeven = inputedeven.Substring(0, inputedeven.Length - 1);
+
             Console.WriteLine("\nNumber of odd {0} [{1}]", count, inputedodd);
-            Console.WriteLine("The sum of odd number {0}", output);
+            Console.WriteLine("Number of even {0} [{1}]", counteven, inputedeven);
+            Console.WriteLine("Max Number {0}",num.Max());
+            Console.WriteLine("Min Number {0}", num.Min());
+            Console.WriteLine("The sum of odd number {0}", sumofodd);
+            Console.WriteLine("The sum of even number {0}", sumofeven);
             Console.ReadLine();
         }
     }
