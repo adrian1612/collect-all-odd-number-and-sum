@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace ConsoleApplication1
 {
     class Program
@@ -29,7 +29,8 @@ namespace ConsoleApplication1
                 if (num.Contains(myinput) || myinput <= 0)
                 {
                     i += -1;
-                    Console.WriteLine("Number already in the list!");
+                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 2);
+                    System.Windows.Forms.MessageBox.Show("Number already in the list!");
                 }
                 else
                 {

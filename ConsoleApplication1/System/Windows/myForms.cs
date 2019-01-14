@@ -1,6 +1,6 @@
 ﻿namespace System.Windows
 {
-    internal class Forms
+    internal class myForms
     {
         internal static object MessageBox;
     }
