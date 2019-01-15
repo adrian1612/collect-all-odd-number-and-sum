@@ -15,6 +15,7 @@ namespace ConsoleApplication1
 
             numberofItem = Convert.ToInt32(Console.ReadLine());
             myInput(numberofItem);
+          
         }
         static void myInput(int numberofItem)
         {
@@ -29,8 +30,10 @@ namespace ConsoleApplication1
                 if (num.Contains(myinput) || myinput <= 0)
                 {
                     i += -1;
-                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 2);
-                    System.Windows.Forms.MessageBox.Show("Number already in the list!");
+                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You inserted a number already in the list please reinsert a unique number");
+                    Console.ResetColor();
                 }
                 else
                 {
@@ -57,13 +60,21 @@ namespace ConsoleApplication1
             inputedodd = inputedodd.Substring(0, inputedodd.Length - 1);
             inputedeven = inputedeven.Substring(0, inputedeven.Length - 1);
 
-            Console.WriteLine("\nNumber of odd {0} [{1}]", count, inputedodd);
-            Console.WriteLine("Number of even {0} [{1}]", counteven, inputedeven);
+            Console.WriteLine("\nNumber of odd {0} ({1} = {2})", count, inputedodd, sumofodd);
+            Console.WriteLine("Number of even {0} ({1} = {2})", counteven, inputedeven, sumofeven);
             Console.WriteLine("Max Number {0}",num.Max());
             Console.WriteLine("Min Number {0}", num.Min());
-            Console.WriteLine("The sum of odd number {0}", sumofodd);
-            Console.WriteLine("The sum of even number {0}", sumofeven);
+
+            num.Sort();
+            string me = null;
+            foreach (int item in num)
+            {
+                me += item+",";
+            }
+            me = me.Substring(0, me.Length - 1);
+            Console.WriteLine("Sort {0}",me);
             Console.ReadLine();
+            Application.Restart();
         }
     }
 }
